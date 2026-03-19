@@ -6,6 +6,9 @@ on:
     tags:
       - 'v*'
 
+permissions:
+  contents: write
+
 env:
   APP_NAME: discord-notify-api
   REMOTE_DIR: /srv/app/discord-notify-api
@@ -45,7 +48,7 @@ jobs:
           name: Release ${{ github.ref_name }}
           files: ${{ env.APP_NAME }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 # ---------------------------------------------------------------- Deploy
   deploy:
